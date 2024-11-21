@@ -3,8 +3,10 @@ import PageLayout from "../components/PageLayout";
 
 const Home = () => {
   return (
-    <section className="bg-slate-400">
-      <PageLayout>Hello World!</PageLayout>
+    <section className="section-min-height">
+      <PageLayout>
+        <h1 className="text-2xl">Hello World!</h1>
+      </PageLayout>
     </section>
   );
 };

@@ -5,7 +5,13 @@ export default {
     container: {
       center: true,
     },
-    extend: {},
+    extend: {
+      colors: {
+        primary: "#5A86AD",
+        secondary: "#AB5AAD",
+        accent: "#AD815A",
+      },
+    },
   },
   plugins: [],
 };
