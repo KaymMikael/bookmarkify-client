@@ -16,12 +16,13 @@ const Nav = () => {
         className="flex items-center justify-between"
         aria-label="large screen navigation"
       >
-        <Link to={"/"} className="hover:opacity-70">
+        <Link to={"/"} className="hover:opacity-70 flex items-center gap-2">
           <img
             src={BookMarkifyLogo}
             alt="Bookmarkify Logo"
             className="w-10 h-10 rounded"
           />
+          <span className="text-xl dark:text-white">Book Markify</span>
         </Link>
         <ul className="hidden md:flex gap-5 text-md items-center dark:text-white">
           <li>
