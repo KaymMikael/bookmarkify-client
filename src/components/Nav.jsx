@@ -36,7 +36,12 @@ const Nav = () => {
             </a>
           </li>
           <li>
-            <Button text={"Log in"} onClick={toggleNav} />
+            <Link
+              to={"/login"}
+              className="bg-primary px-3 py-1 rounded-full hover:opacity-70 active:opacity-50 text-white"
+            >
+              Log in
+            </Link>
           </li>
         </ul>
         <GiHamburgerMenu
@@ -60,17 +65,12 @@ const Nav = () => {
               </Link>
             </li>
             <li>
-              <Link to={"/"} className="hover:opacity-70" onClick={toggleNav}>
-                Testimonials
+              <Link
+                to={"/login"}
+                className="bg-primary px-3 py-1 rounded-full hover:opacity-70 active:opacity-50 text-white"
+              >
+                Log in
               </Link>
-            </li>
-            <li>
-              <Link to={"/"} className="hover:opacity-70" onClick={toggleNav}>
-                Contact Us
-              </Link>
-            </li>
-            <li>
-              <Button text={"Log in"} onClick={toggleNav} />
             </li>
           </ul>
         </nav>
