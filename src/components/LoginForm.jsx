@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "./Button";
 
 const LoginForm = () => {
   return (
@@ -19,9 +20,7 @@ const LoginForm = () => {
           className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary shadow-sm rounded-lg dark:text-white"
         />
       </div>
-      <button className="w-full px-4 py-2 text-white font-medium bg-primary hover:opacity-70 active:opacity-60 rounded-lg duration-150">
-        Sign in
-      </button>
+      <Button text={"Sign in"} onClick={() => console.log("clicked")} />
       <div className="text-center">
         <a
           href="javascript:void(0)"
