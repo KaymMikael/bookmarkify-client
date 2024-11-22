@@ -1,13 +1,13 @@
 import React from "react";
 import PageLayout from "../components/PageLayout";
+import Hero from "../components/Hero";
 
 const Home = () => {
   return (
-    <section className="section-min-height">
-      <PageLayout>
-        <h1 className="text-2xl">Hello World!</h1>
-      </PageLayout>
-    </section>
+    <>
+      <Hero />
+      <hr className="w-1/2 border-accent mx-auto"/>
+    </>
   );
 };
 
