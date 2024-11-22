@@ -27,7 +27,7 @@ const Hero = () => {
               </Link>
               <Link
                 to={"/"}
-                className="border border-solid border-primary px-4 py-2 rounded-full text-white active:opacity-50 hover:opacity-70"
+                className="border border-solid border-primary px-4 py-2 rounded-full active:opacity-50 hover:opacity-70"
               >
                 Learn More
               </Link>
