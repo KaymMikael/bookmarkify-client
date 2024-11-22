@@ -21,7 +21,7 @@ const About = () => {
         <div className="flex flex-col md:flex-row gap-4 text-white items-center md:items-stretch my-6">
           <div className="bg-primary p-8 rounded flex flex-col items-center w-2/3">
             <span className="text-4xl">📥</span>
-            <p className="text-3xl my-3">Save & Store</p>
+            <p className="text-3xl my-3 text-center">Save & Store</p>
             <p className="text-lg text-center leading-relaxed">
               Securely save your most important links and websites in one
               convenient location.
@@ -29,14 +29,14 @@ const About = () => {
           </div>
           <div className="bg-primary p-8 rounded flex flex-col items-center w-2/3">
             <span className="text-4xl">🏷️</span>
-            <p className="text-3xl my-3">Categorize & Tag</p>
+            <p className="text-3xl my-3 text-center">Categorize & Tag</p>
             <p className="text-lg text-center leading-relaxed">
               Organize your bookmarks by topics and tags for easy access.
             </p>
           </div>
           <div className="bg-secondary p-8 rounded flex flex-col items-center w-2/3">
             <span className="text-4xl">🤝</span>
-            <p className="text-3xl my-3">Share with Ease</p>
+            <p className="text-3xl my-3 text-center">Share with Ease</p>
             <p className="text-lg text-center leading-relaxed">
               Choose to keep your bookmarks private or share them with friends,
               colleagues, or the public.
@@ -49,21 +49,21 @@ const About = () => {
         <div className="flex flex-col md:flex-row gap-4 text-white items-center md:items-stretch my-6">
           <div className="bg-secondary p-8 rounded flex flex-col items-center w-2/3">
             <span className="text-4xl">🖱️</span>
-            <p className="text-3xl my-3">User-Friendly</p>
+            <p className="text-3xl my-3 text-center">User-Friendly</p>
             <p className="text-lg text-center leading-relaxed">
               Simple, clean, and easy to navigate.
             </p>
           </div>
           <div className="bg-primary p-8 rounded flex flex-col items-center w-2/3">
             <span className="text-4xl">🔒</span>
-            <p className="text-3xl my-3">Privacy Control</p>
+            <p className="text-3xl my-3 text-center">Privacy Control</p>
             <p className="text-lg text-center leading-relaxed">
               Decide which bookmarks stay private and which ones you share.
             </p>
           </div>
           <div className="bg-primary p-8 rounded flex flex-col items-center w-2/3">
             <span className="text-4xl">🔍</span>
-            <p className="text-3xl my-3">Quick Search</p>
+            <p className="text-3xl my-3 text-center">Quick Search</p>
             <p className="text-lg text-center leading-relaxed">
               Find what you need instantly with our powerful search
               functionality.
