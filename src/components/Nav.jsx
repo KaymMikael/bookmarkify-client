@@ -26,19 +26,14 @@ const Nav = () => {
         </Link>
         <ul className="hidden md:flex gap-5 text-md items-center dark:text-white">
           <li>
-            <Link to={"/"} className="hover:opacity-70">
+            <a href="#about" className="hover:opacity-70">
               About
-            </Link>
+            </a>
           </li>
           <li>
-            <Link to={"/"} className="hover:opacity-70">
+            <a href="#features" className="hover:opacity-70">
               Features
-            </Link>
-          </li>
-          <li>
-            <Link to={"/"} className="hover:opacity-70">
-              Testimonials
-            </Link>
+            </a>
           </li>
           <li>
             <Link to={"/"} className="hover:opacity-70">
