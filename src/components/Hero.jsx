@@ -7,7 +7,7 @@ const Hero = () => {
   return (
     <section className="section-min-height">
       <PageLayout>
-        <div className="flex flex-row items-center justify-center mt-9">
+        <div className="flex flex-row items-center justify-center mt-24">
           <div className="lg:w-1/2">
             <p className="text-center text-5xl md:text-6xl lg:text-left dark:text-white leading-relaxed md:leading-relaxed">
               Simplify Your Web Experience with{" "}
