@@ -5,7 +5,7 @@ import PageLayout from "./PageLayout";
 
 const Hero = () => {
   return (
-    <section className="section-min-height">
+    <section className="section-min-height scroll-mt-20" id="hero">
       <PageLayout>
         <div className="flex flex-row items-center justify-center mt-12">
           <div className="lg:w-1/2">
