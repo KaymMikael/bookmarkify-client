@@ -7,7 +7,7 @@ const Hero = () => {
   return (
     <section className="section-min-height">
       <PageLayout>
-        <div className="flex flex-row items-center justify-center mt-24">
+        <div className="flex flex-row items-center justify-center mt-12">
           <div className="lg:w-1/2">
             <p className="text-center text-5xl md:text-6xl lg:text-left dark:text-white leading-relaxed md:leading-relaxed">
               Simplify Your Web Experience with{" "}
@@ -37,10 +37,36 @@ const Hero = () => {
             <img
               src={IntroImage}
               alt="laptop screen with tags and links popping up in an organized layout"
-              className="rounded-md w-2/3 ms-auto"
+              className="rounded-full w-2/3 ms-auto"
             />
           </div>
         </div>
+        <ul className="flex flex-col items-center mt-6 sm:flex-row gap-4">
+          <li className="w-2/3 rounded border border-slate-600 p-3 flex flex-col items-center">
+            <span className="text-4xl">🌟</span>
+            <p className="text-slate-500 mt-3 dark:text-slate-300">
+              Save Your Favorite Links
+            </p>
+          </li>
+          <li className="w-2/3 rounded border border-slate-600 p-3 flex flex-col items-center">
+            <span className="text-4xl">📂</span>
+            <p className="text-slate-500 mt-3 dark:text-slate-300">
+              Organized Categories
+            </p>
+          </li>
+          <li className="w-2/3 rounded border border-slate-600 p-3 flex flex-col items-center">
+            <span className="text-4xl">🔒</span>
+            <p className="text-slate-500 mt-3 dark:text-slate-300">
+              Privacy or Public Sharing
+            </p>
+          </li>
+          <li className="w-2/3 rounded border border-slate-600 p-3 flex flex-col items-center">
+            <span className="text-4xl">🔍</span>
+            <p className="text-slate-500 mt-3 dark:text-slate-300">
+              Quick Search
+            </p>
+          </li>
+        </ul>
       </PageLayout>
     </section>
   );

@@ -22,7 +22,7 @@ const Nav = () => {
             alt="Bookmarkify Logo"
             className="w-10 h-10 rounded"
           />
-          <span className="text-xl dark:text-white">Book Markify</span>
+          <span className="text-xl dark:text-white">BookMarkify</span>
         </Link>
         <ul className="hidden md:flex gap-5 text-md items-center dark:text-white">
           <li>
