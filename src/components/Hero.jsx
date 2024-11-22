@@ -21,15 +21,15 @@ const Hero = () => {
             <div className="flex justify-center gap-3 lg:justify-start">
               <Link
                 to={"/"}
-                className="bg-secondary px-4 py-2 rounded-full hover:opacity-70 active:opacity-50 text-white"
-              >
-                Learn More
-              </Link>
-              <Link
-                to={"/"}
                 className="bg-primary px-4 py-2 rounded-full hover:opacity-70 active:opacity-50 text-white"
               >
                 Get Started for Free
+              </Link>
+              <Link
+                to={"/"}
+                className="border border-solid border-primary px-4 py-2 rounded-full text-white active:opacity-50 hover:opacity-70"
+              >
+                Learn More
               </Link>
             </div>
           </div>
