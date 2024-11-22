@@ -4,7 +4,7 @@ const Button = ({ text, onClick }) => {
   return (
     <button
       onClick={onClick}
-      className="bg-primary px-3 py-1 rounded-full hover:opacity-70 active:opacity-50 text-white"
+      className="w-full px-4 py-2 text-white font-medium bg-primary hover:opacity-70 active:opacity-60 rounded-lg duration-150"
     >
       {text}
     </button>
