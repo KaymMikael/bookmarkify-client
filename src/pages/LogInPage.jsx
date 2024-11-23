@@ -22,7 +22,7 @@ const LogInPage = () => {
             <p className="dark:text-white">
               Don't have an account?{" "}
               <Link
-                className="font-medium text-primary hover:opacity-70"
+                className="font-medium text-primary hover:underline decoration-accent underline-offset-8 decoration-2"
                 to={"/register"}
               >
                 Sign up

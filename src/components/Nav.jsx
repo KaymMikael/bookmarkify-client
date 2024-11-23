@@ -26,12 +26,12 @@ const Nav = () => {
         </a>
         <ul className="hidden md:flex gap-5 text-md items-center dark:text-white">
           <li>
-            <a href="#about" className="hover:opacity-70">
+            <a href="#about" className="hover:underline decoration-accent underline-offset-8 decoration-2">
               About
             </a>
           </li>
           <li>
-            <a href="#features" className="hover:opacity-70">
+            <a href="#features" className="hover:underline decoration-accent underline-offset-8 decoration-2">
               Features
             </a>
           </li>

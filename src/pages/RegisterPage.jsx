@@ -23,7 +23,7 @@ const RegisterPage = () => {
               Already have an account?{" "}
               <Link
                 to={"/login"}
-                className="font-medium text-primary hover:opacity-70"
+                className="font-medium text-primary hover:underline decoration-accent underline-offset-8 decoration-2"
               >
                 Log in
               </Link>
