@@ -58,7 +58,7 @@ const SideBar = () => {
           />
         </div>
         <div className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white  hover:scale-90">
-          <i class="bi bi-activity"></i>
+          <i className="bi bi-activity"></i>
           <span className="text-[15px] ml-4 text-gray-200 font-bold">
             Dashboard
           </span>
@@ -70,13 +70,13 @@ const SideBar = () => {
           </span>
         </div>
         <div className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white  hover:scale-90">
-          <i class="bi bi-globe"></i>
+          <i className="bi bi-globe"></i>
           <span className="text-[15px] ml-4 text-gray-200 font-bold">
             Public
           </span>
         </div>
         <div className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white hover:scale-90">
-          <i class="bi bi-person-fill"></i>
+          <i className="bi bi-person-fill"></i>
           <span className="text-[15px] ml-4 text-gray-200 font-bold">
             Profile
           </span>
