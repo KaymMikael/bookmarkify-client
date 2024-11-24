@@ -5,7 +5,12 @@ const BookmarkItem = ({ bookMark }) => {
     <li className="py-6 border-b dark:border-b-gray-500 dark:text-white">
       <div className="flex justify-between">
         <div className="flex items-center">
-          <a href={bookMark.url} target="_blank" className="text-xl capitalize">
+          <a
+            href={bookMark.url}
+            target="_blank"
+            className="text-xl capitalize"
+            title={bookMark.url}
+          >
             {bookMark.title}
           </a>
           <span className="ml-2 text-xs border py-1 px-2 rounded-full bg-primary text-white dark:border-0">
