@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
 import { BrowserRouter as Router } from "react-router-dom";
+import Provider from "./Provider";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -12,7 +13,9 @@ createRoot(document.getElementById("root")).render(
         v7_relativeSplatPath: true,
       }}
     >
-      <App />
+      <Provider>
+        <App />
+      </Provider>
     </Router>
   </StrictMode>
 );
