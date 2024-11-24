@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import BookmarkItem from "./BookmarkItem";
+import { UserBookmarkContext } from "../context/UserBookmarkContext";
 
-const BookmarkList = ({ userBookmarks }) => {
+const BookmarkList = () => {
+  const { filteredBookmarks } = useContext(UserBookmarkContext);
   return (
     <ul>
-      {userBookmarks.length && userBookmarks ? (
-        userBookmarks.map((bookmark) => (
+      {filteredBookmarks.length && filteredBookmarks ? (
+        filteredBookmarks.map((bookmark) => (
           <BookmarkItem bookMark={bookmark} key={bookmark.bookMarkId} />
         ))
       ) : (
