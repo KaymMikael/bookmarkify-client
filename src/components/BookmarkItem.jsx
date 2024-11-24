@@ -5,14 +5,14 @@ const BookmarkItem = ({ bookMark }) => {
     <li className="py-6 border-b dark:border-b-gray-500 dark:text-white">
       <div className="flex justify-between">
         <div className="flex items-center">
-          <a href={bookMark.url} target="_blank" className="text-xl">
+          <a href={bookMark.url} target="_blank" className="text-xl capitalize">
             {bookMark.title}
           </a>
-          <span className="ml-2 text-xs border py-1 px-2 rounded-full bg-primary text-white">
+          <span className="ml-2 text-xs border py-1 px-2 rounded-full bg-primary text-white dark:border-0">
             {bookMark.isPublic ? "Public" : "Private"}
           </span>
         </div>
-        <div className="flex gap-3 text-xl text-accent">
+        <div className="flex gap-3 text-xl text-gray-700 dark:text-white">
           <button className="">
             <i className="bi bi-pencil-square"></i>
           </button>
