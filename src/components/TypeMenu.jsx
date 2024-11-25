@@ -1,6 +1,6 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 
-const TypeMenu = () => {
+const TypeMenu = ({ setFilterType }) => {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
@@ -19,28 +19,28 @@ const TypeMenu = () => {
       >
         <div className="py-1">
           <MenuItem>
-            <a
-              href="#"
+            <button
               className="block px-4 py-2 text-sm text-gray-600 data-[focus]:bg-gray-100 data-[focus]:text-gray-900 data-[focus]:outline-none"
+              onClick={() => setFilterType("all")}
             >
               All
-            </a>
+            </button>
           </MenuItem>
           <MenuItem>
-            <a
-              href="#"
+            <button
               className="block px-4 py-2 text-sm text-gray-600 data-[focus]:bg-gray-100 data-[focus]:text-gray-900 data-[focus]:outline-none"
+              onClick={() => setFilterType("public")}
             >
               Public
-            </a>
+            </button>
           </MenuItem>
           <MenuItem>
-            <a
-              href="#"
+            <button
               className="block px-4 py-2 text-sm text-gray-600 data-[focus]:bg-gray-100 data-[focus]:text-gray-900 data-[focus]:outline-none"
+              onClick={() => setFilterType("private")}
             >
               Private
-            </a>
+            </button>
           </MenuItem>
         </div>
       </MenuItems>
