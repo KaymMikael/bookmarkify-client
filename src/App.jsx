@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import LogInPage from "./pages/LogInPage";
 import RegisterPage from "./pages/RegisterPage";
 import DashboardPage from "./pages/DashboardPage";
+import NewBookmarkPage from "./pages/NewBookmarkPage";
 
 const App = () => {
   const routes = [
@@ -22,6 +23,10 @@ const App = () => {
       path: "/dashboard",
       element: <DashboardPage />,
     },
+    {
+      path: "/new-bookmark",
+      element: <NewBookmarkPage />,
+    },
   ];
 
   return (
@@ -29,7 +34,7 @@ const App = () => {
       <main>
         <Routes>
           {routes.map((route) => (
-            <Route path={route.path} element={route.element} key={route.path}/>
+            <Route path={route.path} element={route.element} key={route.path} />
           ))}
         </Routes>
       </main>
