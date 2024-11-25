@@ -7,7 +7,7 @@ const NewBookmarkForm = () => {
   const [enabled, setEnabled] = useState(false);
   const [title, setTitle] = useState("");
   const [url, setUrl] = useState("");
-  const [message, setMessage] = useState("Message here");
+  const [message, setMessage] = useState("");
   const [hasError, setHasError] = useState(false);
 
   const handleAddTag = (e) => {
