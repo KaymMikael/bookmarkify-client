@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import BookmarkItem from "./BookmarkItem";
 import { UserBookmarkContext } from "../context/UserBookmarkContext";
-import { Link } from "react-router-dom";
 
 const BookmarkList = () => {
   const { filteredBookmarks } = useContext(UserBookmarkContext);
