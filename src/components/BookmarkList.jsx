@@ -8,7 +8,7 @@ const BookmarkList = () => {
     <ul>
       {filteredBookmarks.length && filteredBookmarks ? (
         filteredBookmarks.map((bookmark) => (
-          <BookmarkItem bookMark={bookmark} key={bookmark.bookMarkId} />
+          <BookmarkItem bookMark={bookmark} key={bookmark.id} />
         ))
       ) : (
         <p>Nothing to see here...</p>

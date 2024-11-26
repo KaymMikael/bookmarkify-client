@@ -5,7 +5,7 @@ export const UserBookmarkContext = createContext();
 const UserBookmarkProvider = ({ children }) => {
   const [userBookmarks, setUserBookmarks] = useState([
     {
-      bookMarkId: 1,
+      id: 1,
       userId: 1,
       title: "React Documentation",
       url: "https://reactjs.org/",
@@ -14,7 +14,7 @@ const UserBookmarkProvider = ({ children }) => {
       isPublic: true,
     },
     {
-      bookMarkId: 2,
+      id: 2,
       userId: 1,
       title: "MDN Web Docs",
       url: "https://developer.mozilla.org/",
@@ -23,7 +23,7 @@ const UserBookmarkProvider = ({ children }) => {
       isPublic: false,
     },
     {
-      bookMarkId: 3,
+      id: 3,
       userId: 1,
       title: "Github",
       url: "https://developer.mozilla.org/",
