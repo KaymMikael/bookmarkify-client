@@ -1,7 +1,9 @@
 import { Button, Switch } from "@headlessui/react";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { UserBookmarkContext } from "../context/UserBookmarkContext";
 
 const NewBookmarkForm = () => {
+  const { userBookmarks, setUserBookmarks } = useContext(UserBookmarkContext);
   const [tags, setTags] = useState([]);
   const [tagInput, setTagInput] = useState("");
   const [enabled, setEnabled] = useState(false);
@@ -26,8 +28,20 @@ const NewBookmarkForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newBookmark = { title, url, tags, isPublic: enabled };
+    const id = userBookmarks.length
+      ? userBookmarks[userBookmarks.length - 1].id + 1
+      : 1;
+    const bookmarkData = {
+      title,
+      url,
+      tags,
+      isPublic: enabled,
+      createdAt: new Date(),
+    };
+    const newBookmark = { id, userId: 1, ...bookmarkData };
     console.log("New Bookmark:", newBookmark);
+    setUserBookmarks((prev) => [...prev, newBookmark]);
+    console.log("added");
   };
 
   return (
