@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import BookmarkItem from "./BookmarkItem";
 import { UserBookmarkContext } from "../context/UserBookmarkContext";
+import { Link } from "react-router-dom";
 
 const BookmarkList = () => {
   const { filteredBookmarks } = useContext(UserBookmarkContext);
@@ -11,7 +12,7 @@ const BookmarkList = () => {
           <BookmarkItem bookMark={bookmark} key={bookmark.id} />
         ))
       ) : (
-        <p>Nothing to see here...</p>
+        <p className="text-2xl my-2 text-center">Nothing to see here...</p>
       )}
     </ul>
   );
