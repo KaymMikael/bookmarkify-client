@@ -7,6 +7,7 @@ import axios from "axios";
 const LoginForm = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [message, setMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -23,7 +24,7 @@ const LoginForm = () => {
     if (!email || !password) {
       return;
     }
-
+    setIsLoading(true);
     try {
       const loginResult = await axiosHelper.post("/auth/login", formData);
       console.log(loginResult.data.message);
@@ -33,6 +34,7 @@ const LoginForm = () => {
       }
       console.error(e);
     } finally {
+      setIsLoading(false);
       hideMessage();
     }
   };
@@ -61,7 +63,10 @@ const LoginForm = () => {
         />
       </div>
       {message && <p className="text-red-500">{message}</p>}
-      <Button text={"Sign in"} onClick={handleButtonClick} />
+      <Button
+        text={isLoading ? "Signing in..." : "Sign in"}
+        onClick={handleButtonClick}
+      />
       <div className="text-center">
         <a href="" className="hover:text-primary dark:text-white">
           Forgot password?
