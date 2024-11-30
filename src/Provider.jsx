@@ -1,7 +1,12 @@
+import AuthProvider from "./context/AuthContext";
 import UserBookmarkProvider from "./context/UserBookmarkContext";
 
 const Provider = ({ children }) => {
-  return <UserBookmarkProvider>{children}</UserBookmarkProvider>;
+  return (
+    <AuthProvider>
+      <UserBookmarkProvider>{children}</UserBookmarkProvider>
+    </AuthProvider>
+  );
 };
 
 export default Provider;

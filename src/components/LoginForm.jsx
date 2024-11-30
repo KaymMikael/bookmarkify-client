@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import Button from "./Button";
 import debounce from "lodash.debounce";
-import axiosHelper from "../axios/axiosHelper";
-import axios from "axios";
+import { useAuth } from "../hooks/useAuth";
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const { login } = useAuth();
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -16,9 +16,9 @@ const LoginForm = () => {
 
   const hideMessage = debounce(() => {
     setMessage("");
-  }, 2000);//2 seconds
+  }, 2000); //2 seconds
 
-  const handleButtonClick = async () => {
+  const handleLogin = async () => {
     const { email, password } = formData;
 
     if (!email || !password) {
@@ -26,8 +26,7 @@ const LoginForm = () => {
     }
     setIsLoading(true);
     try {
-      const loginResult = await axiosHelper.post("/auth/login", formData);
-      console.log(loginResult.data.message);
+      await login(formData);
     } catch (e) {
       if (e.response && e.response.data.error) {
         setMessage(e.response.data.error);
@@ -65,7 +64,7 @@ const LoginForm = () => {
       {message && <p className="text-red-500">{message}</p>}
       <Button
         text={isLoading ? "Signing in..." : "Sign in"}
-        onClick={handleButtonClick}
+        onClick={handleLogin}
       />
       <div className="text-center">
         <a href="" className="hover:text-primary dark:text-white">

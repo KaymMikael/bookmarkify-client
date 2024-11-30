@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import Logo from "../assets/img/BookMarkifyLogoTransparent.png";
 import { Link } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
 
 const SideBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { logout } = useAuth();
 
   useEffect(() => {
     const handleResize = () => {
@@ -21,6 +23,14 @@ const SideBar = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   return (
     <>
@@ -91,9 +101,12 @@ const SideBar = () => {
         <div className="my-4 bg-gray-600 h-[1px]"></div>
         <div className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white hover:scale-90">
           <i className="bi bi-box-arrow-in-right"></i>
-          <span className="text-[15px] ml-4 text-gray-200 font-bold">
+          <button
+            className="text-[15px] ml-4 text-gray-200 font-bold"
+            onClick={handleLogout}
+          >
             Logout
-          </span>
+          </button>
         </div>
       </div>
     </>
