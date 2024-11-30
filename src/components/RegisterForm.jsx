@@ -17,7 +17,7 @@ const RegisterForm = () => {
   const hideMessage = debounce(() => {
     setMessage("");
     setHasError(false);
-  }, 1300);
+  }, 2000);//2 seconds
 
   const handleChange = (e) => {
     const { name, value } = e.target;

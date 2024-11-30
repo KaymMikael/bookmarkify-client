@@ -16,7 +16,7 @@ const LoginForm = () => {
 
   const hideMessage = debounce(() => {
     setMessage("");
-  }, 1300);
+  }, 2000);//2 seconds
 
   const handleButtonClick = async () => {
     const { email, password } = formData;
