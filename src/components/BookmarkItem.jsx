@@ -1,3 +1,4 @@
+import { formatDistanceToNow } from "date-fns";
 import React from "react";
 
 const BookmarkItem = ({ bookMark }) => {
@@ -36,7 +37,11 @@ const BookmarkItem = ({ bookMark }) => {
           </li>
         ))}
       </ul>
-      <p className="text-gray-400 text-sm">Created 5 days ago</p>
+      <p className="text-gray-400 text-sm">
+        {`Created ${formatDistanceToNow(bookMark.createdAt, {
+          addSuffix: true,
+        })}`}
+      </p>
     </li>
   );
 };
