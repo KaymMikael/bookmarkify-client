@@ -1,6 +1,8 @@
 import { Button, Switch } from "@headlessui/react";
 import { useContext, useState } from "react";
 import { UserBookmarkContext } from "../context/UserBookmarkContext";
+import axiosHelper from "../axios/axiosHelper";
+import { useAuth } from "../hooks/useAuth";
 
 const NewBookmarkForm = () => {
   const { userBookmarks, setUserBookmarks } = useContext(UserBookmarkContext);
@@ -11,6 +13,7 @@ const NewBookmarkForm = () => {
   const [url, setUrl] = useState("");
   const [message, setMessage] = useState("");
   const [hasError, setHasError] = useState(false);
+  const { user } = useAuth();
 
   const handleAddTag = (e) => {
     if (e.key === " " && tagInput.trim() !== "") {
@@ -26,22 +29,28 @@ const NewBookmarkForm = () => {
     setTags(tags.filter((tag) => tag !== tagToRemove));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const id = userBookmarks.length
-      ? userBookmarks[userBookmarks.length - 1].id + 1
-      : 1;
-    const bookmarkData = {
-      title,
-      url,
-      tags,
-      isPublic: enabled,
-      createdAt: new Date(),
-    };
-    const newBookmark = { id, userId: 1, ...bookmarkData };
-    console.log("New Bookmark:", newBookmark);
-    setUserBookmarks((prev) => [...prev, newBookmark]);
-    console.log("added");
+    try {
+      const result = await axiosHelper.post("/bookmark", {
+        userId: user.user_id,
+        title,
+        url,
+        isPublic: enabled,
+        tags,
+      });
+      console.log(result);
+      // Reset input fields after successful submission
+      setTitle("");
+      setUrl("");
+      setTags([]);
+      setTagInput("");
+      setEnabled(false);
+      setMessage("Bookmark Successfully Created");
+      setHasError(false);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
