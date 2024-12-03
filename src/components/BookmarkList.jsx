@@ -1,8 +1,13 @@
 import BookmarkItem from "./BookmarkItem";
+import BookGIF from "../assets/img/BookGIF.gif";
 
 const BookmarkList = ({ bookmarks, loading }) => {
   if (loading) {
-    return <p className="text-center text-2xl mt-2">Loading bookmarks...</p>;
+    return (
+      <div className="flex justify-center mt-2">
+        <img src={BookGIF} alt="Book" />
+      </div>
+    );
   }
 
   return (
