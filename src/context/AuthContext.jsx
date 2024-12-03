@@ -46,7 +46,7 @@ const AuthProvider = ({ children }) => {
   if (loading) {
     return (
       <div className="pt-32 flex justify-center">
-        <img src={CircleGIF} alt="Circle spinner" />
+        <img src={CircleGIF} alt="Circle spinner" className="rounded-full"/>
       </div>
     );
   }

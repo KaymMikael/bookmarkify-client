@@ -5,7 +5,7 @@ const BookmarkList = ({ bookmarks, loading }) => {
   if (loading) {
     return (
       <div className="flex justify-center mt-2">
-        <img src={BookGIF} alt="Book" />
+        <img src={BookGIF} alt="Book" className="rounded-full" />
       </div>
     );
   }
