@@ -1,62 +1,59 @@
 import { Button, Switch } from "@headlessui/react";
-import { useState, useCallback } from "react";
-import axiosHelper from "../axios/axiosHelper";
+import { useCallback } from "react";
 import { useAuth } from "../hooks/useAuth";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { addBookmark } from "../api/BookMark";
+import useBookmarkForm from "../hooks/useBookmarkForm";
 
 const NewBookmarkForm = () => {
-  const [tags, setTags] = useState([]);
-  const [tagInput, setTagInput] = useState("");
-  const [enabled, setEnabled] = useState(false);
-  const [title, setTitle] = useState("");
-  const [url, setUrl] = useState("");
-  const [message, setMessage] = useState("");
-  const [hasError, setHasError] = useState(false);
+  const queryClient = useQueryClient();
   const { user } = useAuth();
+  const {
+    tags,
+    tagInput,
+    enabled,
+    message,
+    hasError,
+    formData,
+    setFormData,
+    setTagInput,
+    setEnabled,
+    setMessage,
+    setHasError,
+    handleDataChange,
+    handleAddTag,
+    handleRemoveTag,
+  } = useBookmarkForm(user);
 
-  const handleAddTag = useCallback(
-    (e) => {
-      if (e.key === " " && tagInput.trim() !== "") {
-        e.preventDefault();
-        if (!tags.includes(tagInput.trim())) {
-          setTags((prevTags) => [...prevTags, tagInput.trim()]);
-          setTagInput("");
-        }
-      }
+  const mutation = useMutation({
+    mutationFn: addBookmark,
+    onSuccess: () => {
+      setFormData({
+        userId: user.user_id,
+        title: "",
+        url: "",
+        isPublic: false,
+        tags: [],
+      });
+      setTagInput("");
+      setEnabled(false);
+      setMessage("Bookmark Successfully Created");
+      setHasError(false);
+      queryClient.invalidateQueries(["userBookmarks"]);
     },
-    [tagInput, tags]
-  );
-
-  const handleRemoveTag = useCallback((tagToRemove) => {
-    setTags((prevTags) => prevTags.filter((tag) => tag !== tagToRemove));
-  }, []);
+    onError: (error) => {
+      console.error(`Error creating bookmark: ${error}`);
+      setMessage(error.response?.data?.error || "An error occurred");
+      setHasError(true);
+    },
+  });
 
   const handleSubmit = useCallback(
-    async (e) => {
+    (e) => {
       e.preventDefault();
-      try {
-        const result = await axiosHelper.post("/bookmark", {
-          userId: user.user_id,
-          title,
-          url,
-          isPublic: enabled,
-          tags,
-        });
-        console.log(result);
-        // Reset input fields after successful submission
-        setTitle("");
-        setUrl("");
-        setTags([]);
-        setTagInput("");
-        setEnabled(false);
-        setMessage("Bookmark Successfully Created");
-        setHasError(false);
-      } catch (e) {
-        console.error(`Error creating bookmark: ${e}`);
-        setMessage(e.response?.data?.error || "An error occurred");
-        setHasError(true);
-      }
+      mutation.mutate(formData);
     },
-    [user.user_id, title, url, enabled, tags]
+    [formData, mutation]
   );
 
   return (
@@ -76,8 +73,8 @@ const NewBookmarkForm = () => {
           type="text"
           name="title"
           required
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          value={formData.title}
+          onChange={handleDataChange}
           className="px-3 py-1 text-gray-500 bg-transparent outline-none border focus:border-primary shadow-sm rounded-lg dark:text-white"
         />
       </label>
@@ -89,8 +86,8 @@ const NewBookmarkForm = () => {
           type="url"
           name="url"
           required
-          value={url}
-          onChange={(e) => setUrl(e.target.value)}
+          value={formData.url}
+          onChange={handleDataChange}
           className="px-3 py-1 text-gray-500 bg-transparent outline-none border focus:border-primary shadow-sm rounded-lg dark:text-white"
         />
       </label>
@@ -139,6 +136,7 @@ const NewBookmarkForm = () => {
           checked={enabled}
           onChange={setEnabled}
           aria-required
+          aria-label="Public toggle"
           className="group inline-flex h-6 w-11 items-center rounded-full bg-gray-200 transition data-[checked]:bg-blue-600 mt-1"
         >
           <span className="size-4 translate-x-1 rounded-full bg-white transition group-data-[checked]:translate-x-6" />
