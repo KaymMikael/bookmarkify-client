@@ -15,7 +15,7 @@ const useFetch = (url) => {
       } finally {
         setTimeout(() => {
           setLoading(false);
-        }, 1000);
+        }, 2500);
       }
     },
     [url]

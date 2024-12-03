@@ -31,7 +31,7 @@ const AuthProvider = ({ children }) => {
     } finally {
       setTimeout(() => {
         setLoading(false);
-      }, 500);
+      }, 1500);
     }
   };
 
@@ -43,7 +43,7 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   if (loading) {
-    return <p className="text-center mt-2 text-2xl">Getting user...</p>;
+    return <div className="pt-32 flex justify-center">Getting user...</div>;
   }
 
   return (
