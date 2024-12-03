@@ -17,7 +17,7 @@ const BookmarkList = ({ bookmarks, loading }) => {
           <BookmarkItem bookMark={bookmark} key={bookmarkId} />
         ))
       ) : (
-        <p className="text-center text-2xl mt-2">Nothing to see here...</p>
+        <p className="text-center text-2xl mt-2">No bookmarks available.</p>
       )}
     </ul>
   );
