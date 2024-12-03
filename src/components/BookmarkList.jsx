@@ -13,8 +13,8 @@ const BookmarkList = ({ bookmarks, loading }) => {
   return (
     <ul>
       {bookmarks.length ? (
-        bookmarks.map(({ bookmarkId, ...bookmark }) => (
-          <BookmarkItem bookMark={bookmark} key={bookmarkId} />
+        bookmarks.map((bookmark) => (
+          <BookmarkItem bookMark={bookmark} key={bookmark.bookmarkId} />
         ))
       ) : (
         <p className="text-center text-2xl mt-2">No bookmarks available.</p>
