@@ -30,9 +30,7 @@ const AuthProvider = ({ children }) => {
     } catch (e) {
       console.error(e);
     } finally {
-      setTimeout(() => {
-        setLoading(false);
-      }, 3000);
+      setLoading(false);
     }
   };
 
@@ -46,7 +44,7 @@ const AuthProvider = ({ children }) => {
   if (loading) {
     return (
       <div className="pt-32 flex justify-center">
-        <img src={CircleGIF} alt="Circle spinner" className="rounded-full"/>
+        <img src={CircleGIF} alt="Circle spinner" className="rounded-full" />
       </div>
     );
   }
