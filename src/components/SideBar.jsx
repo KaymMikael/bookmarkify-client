@@ -1,13 +1,10 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import Logo from "../assets/img/BookMarkifyLogoTransparent.png";
 import { Link } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
-import { UserBookmarkContext } from "../context/UserBookmarkContext";
 
 const SideBar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { setUserBookmarks, setFilteredBookmarks } =
-    useContext(UserBookmarkContext);
   const { logout } = useAuth();
 
   useEffect(() => {
@@ -30,8 +27,6 @@ const SideBar = () => {
   const handleLogout = async () => {
     try {
       await logout();
-      setUserBookmarks([]);
-      setFilteredBookmarks([]);
     } catch (e) {
       console.error(e);
     }

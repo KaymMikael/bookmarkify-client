@@ -1,11 +1,9 @@
 import { Button, Switch } from "@headlessui/react";
-import { useContext, useState, useCallback } from "react";
-import { UserBookmarkContext } from "../context/UserBookmarkContext";
+import { useState, useCallback } from "react";
 import axiosHelper from "../axios/axiosHelper";
 import { useAuth } from "../hooks/useAuth";
 
 const NewBookmarkForm = () => {
-  const { setUserBookmarks } = useContext(UserBookmarkContext);
   const [tags, setTags] = useState([]);
   const [tagInput, setTagInput] = useState("");
   const [enabled, setEnabled] = useState(false);
@@ -15,45 +13,51 @@ const NewBookmarkForm = () => {
   const [hasError, setHasError] = useState(false);
   const { user } = useAuth();
 
-  const handleAddTag = useCallback((e) => {
-    if (e.key === " " && tagInput.trim() !== "") {
-      e.preventDefault();
-      if (!tags.includes(tagInput.trim())) {
-        setTags((prevTags) => [...prevTags, tagInput.trim()]);
-        setTagInput("");
+  const handleAddTag = useCallback(
+    (e) => {
+      if (e.key === " " && tagInput.trim() !== "") {
+        e.preventDefault();
+        if (!tags.includes(tagInput.trim())) {
+          setTags((prevTags) => [...prevTags, tagInput.trim()]);
+          setTagInput("");
+        }
       }
-    }
-  }, [tagInput, tags]);
+    },
+    [tagInput, tags]
+  );
 
   const handleRemoveTag = useCallback((tagToRemove) => {
     setTags((prevTags) => prevTags.filter((tag) => tag !== tagToRemove));
   }, []);
 
-  const handleSubmit = useCallback(async (e) => {
-    e.preventDefault();
-    try {
-      const result = await axiosHelper.post("/bookmark", {
-        userId: user.user_id,
-        title,
-        url,
-        isPublic: enabled,
-        tags,
-      });
-      console.log(result);
-      // Reset input fields after successful submission
-      setTitle("");
-      setUrl("");
-      setTags([]);
-      setTagInput("");
-      setEnabled(false);
-      setMessage("Bookmark Successfully Created");
-      setHasError(false);
-    } catch (e) {
-      console.error(`Error creating bookmark: ${e}`);
-      setMessage(e.response?.data?.error || "An error occurred");
-      setHasError(true);
-    }
-  }, [user.user_id, title, url, enabled, tags]);
+  const handleSubmit = useCallback(
+    async (e) => {
+      e.preventDefault();
+      try {
+        const result = await axiosHelper.post("/bookmark", {
+          userId: user.user_id,
+          title,
+          url,
+          isPublic: enabled,
+          tags,
+        });
+        console.log(result);
+        // Reset input fields after successful submission
+        setTitle("");
+        setUrl("");
+        setTags([]);
+        setTagInput("");
+        setEnabled(false);
+        setMessage("Bookmark Successfully Created");
+        setHasError(false);
+      } catch (e) {
+        console.error(`Error creating bookmark: ${e}`);
+        setMessage(e.response?.data?.error || "An error occurred");
+        setHasError(true);
+      }
+    },
+    [user.user_id, title, url, enabled, tags]
+  );
 
   return (
     <form className="max-w-4xl mx-auto" onSubmit={handleSubmit}>
