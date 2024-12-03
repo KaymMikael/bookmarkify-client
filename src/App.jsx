@@ -6,6 +6,7 @@ import DashboardPage from "./pages/DashboardPage";
 import NewBookmarkPage from "./pages/NewBookmarkPage";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
+import PublicPage from "./pages/PublicPage";
 
 const App = () => {
   const routes = [
@@ -42,6 +43,14 @@ const App = () => {
       element: (
         <PrivateRoute>
           <NewBookmarkPage />
+        </PrivateRoute>
+      ),
+    },
+    {
+      path: "/public",
+      element: (
+        <PrivateRoute>
+          <PublicPage />
         </PrivateRoute>
       ),
     },
