@@ -13,7 +13,9 @@ const useFetch = (url) => {
       } catch (e) {
         console.error(`Fetch error:${e}`);
       } finally {
-        setLoading(false);
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
       }
     },
     [url]

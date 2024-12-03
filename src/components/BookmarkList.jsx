@@ -2,7 +2,7 @@ import BookmarkItem from "./BookmarkItem";
 
 const BookmarkList = ({ bookmarks, loading }) => {
   if (loading) {
-    return <p className="text-center text-2xl mt-2">Loading...</p>;
+    return <p className="text-center text-2xl mt-2">Loading bookmarks...</p>;
   }
 
   return (

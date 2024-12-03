@@ -29,7 +29,9 @@ const AuthProvider = ({ children }) => {
     } catch (e) {
       console.error(e);
     } finally {
-      setLoading(false);
+      setTimeout(() => {
+        setLoading(false);
+      }, 500);
     }
   };
 
@@ -41,7 +43,7 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   if (loading) {
-    return <div className="text-center mt-2">Loading...</div>;
+    return <p className="text-center mt-2 text-2xl">Getting user...</p>;
   }
 
   return (
