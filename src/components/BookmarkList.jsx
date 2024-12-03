@@ -1,14 +1,18 @@
 import BookmarkItem from "./BookmarkItem";
 
-const BookmarkList = ({ bookmarks }) => {
+const BookmarkList = ({ bookmarks, loading }) => {
+  if (loading) {
+    return <p className="text-center text-2xl mt-2">Loading...</p>;
+  }
+
   return (
     <ul>
-      {bookmarks.length === 0 ? (
-        <p className="text-center text-2xl mt-2">Nothing to see here...</p>
-      ) : (
-        bookmarks.map((bookmark) => (
-          <BookmarkItem bookMark={bookmark} key={bookmark.bookmarkId} />
+      {bookmarks.length ? (
+        bookmarks.map(({ bookmarkId, ...bookmark }) => (
+          <BookmarkItem bookMark={bookmark} key={bookmarkId} />
         ))
+      ) : (
+        <p className="text-center text-2xl mt-2">Nothing to see here...</p>
       )}
     </ul>
   );

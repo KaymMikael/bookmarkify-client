@@ -1,10 +1,13 @@
-import { useContext } from "react";
 import BookmarkList from "./BookmarkList";
-import { UserBookmarkContext } from "../context/UserBookmarkContext";
+import useFetch from "../hooks/useFetch";
+import { useAuth } from "../hooks/useAuth";
 
 const DashboardBody = () => {
-  const { filteredBookmarks } = useContext(UserBookmarkContext);
-  return <BookmarkList bookmarks={filteredBookmarks} />;
+  const { user } = useAuth();
+  const { data: userBookmarks, loading } = useFetch(
+    `/bookmark/${user.user_id}`
+  );
+  return <BookmarkList bookmarks={userBookmarks} loading={loading} />;
 };
 
 export default DashboardBody;
