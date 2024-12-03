@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import axiosHelper from "../axios/axiosHelper";
 import { useNavigate } from "react-router-dom";
+import CircleGIF from "../assets/img/CircleGIF.gif";
 
 export const AuthContext = createContext();
 
@@ -31,7 +32,7 @@ const AuthProvider = ({ children }) => {
     } finally {
       setTimeout(() => {
         setLoading(false);
-      }, 1500);
+      }, 3000);
     }
   };
 
@@ -43,7 +44,11 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   if (loading) {
-    return <div className="pt-32 flex justify-center">Getting user...</div>;
+    return (
+      <div className="pt-32 flex justify-center">
+        <img src={CircleGIF} alt="Circle spinner" />
+      </div>
+    );
   }
 
   return (
