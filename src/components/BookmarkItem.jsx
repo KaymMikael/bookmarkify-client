@@ -4,7 +4,7 @@ import BookmarkDetails from "./BookmarkDetails";
 import { deleteBookmark } from "../api/BookMark";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-const BookmarkItem = ({ bookMark }) => {
+const BookmarkItem = ({ bookMark, user_id }) => {
   const [isModalOpen, setModalOpen] = useState(false);
   const queryClient = useQueryClient();
 
@@ -29,7 +29,11 @@ const BookmarkItem = ({ bookMark }) => {
   return (
     <>
       <li className="py-6 border-b dark:border-b-gray-500 dark:text-white">
-        <BookmarkDetails bookMark={bookMark} openModal={openModal} />
+        <BookmarkDetails
+          bookMark={bookMark}
+          openModal={openModal}
+          user_id={user_id}
+        />
       </li>
       {/* Render the modal */}
       <DeleteModal

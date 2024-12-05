@@ -1,7 +1,7 @@
 import { formatDistanceToNow } from "date-fns";
 import React from "react";
 
-const BookmarkDetails = ({ bookMark, openModal }) => {
+const BookmarkDetails = ({ bookMark, openModal, user_id }) => {
   return (
     <>
       <div className="flex justify-between">
@@ -18,14 +18,18 @@ const BookmarkDetails = ({ bookMark, openModal }) => {
             {bookMark.isPublic ? "Public" : "Private"}
           </span>
         </div>
-        <div className="flex gap-3 text-xl text-gray-700 dark:text-white">
-          <button className="" onClick={() => console.log("Edit clicked")}>
-            <i className="bi bi-pencil-square"></i>
-          </button>
-          <button onClick={openModal}>
-            <i className="bi bi-trash-fill"></i>
-          </button>
-        </div>
+        {user_id === bookMark.user_id ? (
+          <div className="flex gap-3 text-xl text-gray-700 dark:text-white">
+            <button className="" onClick={() => console.log("Edit clicked")}>
+              <i className="bi bi-pencil-square"></i>
+            </button>
+            <button onClick={openModal}>
+              <i className="bi bi-trash-fill"></i>
+            </button>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
       <ul className="flex gap-3 my-2 flex-wrap">
         {bookMark.tags.map((tag) => (

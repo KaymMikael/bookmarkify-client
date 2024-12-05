@@ -21,7 +21,9 @@ const DashboardBody = () => {
     );
   }
 
-  return <BookmarkList bookmarks={userBookmarks} loading={isLoading} />;
+  return (
+    <BookmarkList bookmarks={userBookmarks} loading={isLoading} user={user} />
+  );
 };
 
 export default DashboardBody;
