@@ -8,3 +8,7 @@ export const fetchUserBookmarkByUserId = async (userId) => {
 export const addBookmark = async (bookmarkData) => {
   return axiosHelper.post(`/bookmarks`, bookmarkData);
 };
+
+export const deleteBookmark = async (bookmarkId) => {
+  return axiosHelper.delete(`/bookmarks/${bookmarkId}`);
+};

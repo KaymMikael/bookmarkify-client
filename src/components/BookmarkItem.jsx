@@ -1,16 +1,30 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import DeleteModal from "./DeleteModal";
 import BookmarkDetails from "./BookmarkDetails";
+import { deleteBookmark } from "../api/BookMark";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const BookmarkItem = ({ bookMark }) => {
   const [isModalOpen, setModalOpen] = useState(false);
+  const queryClient = useQueryClient();
 
   const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
 
-  const onDelete = () => {
-    console.log(bookMark.bookmarkId);
-  };
+  const mutation = useMutation({
+    mutationFn: deleteBookmark,
+    onSuccess: () => {
+      closeModal();
+      queryClient.invalidateQueries(["userBookmarks"]);
+    },
+    onError: (e) => {
+      console.log(e);
+    },
+  });
+
+  const onDelete = useCallback(() => {
+    mutation.mutate(bookMark.bookmarkId);
+  });
 
   return (
     <>
