@@ -40,7 +40,7 @@ const SideBar = () => {
       >
         <i className="bi bi-filter-left px-2 bg-gray-900 rounded-md"></i>
       </span>
-      <div
+      <nav
         className={`sidebar fixed top-0 bottom-0 lg:left-0 p-2 w-full sm:w-[300px] overflow-y-auto text-center bg-gray-900 z-10 ${
           isOpen ? "" : "hidden"
         }`}
@@ -111,7 +111,7 @@ const SideBar = () => {
             Logout
           </button>
         </div>
-      </div>
+      </nav>
     </>
   );
 };
