@@ -1,7 +1,9 @@
 import { formatDistanceToNow } from "date-fns";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const BookmarkDetails = ({ bookMark, openModal, user_id }) => {
+  const navigate = useNavigate();
   return (
     <>
       <div className="flex justify-between">
@@ -20,7 +22,10 @@ const BookmarkDetails = ({ bookMark, openModal, user_id }) => {
         </div>
         {user_id === bookMark.user_id ? (
           <div className="flex gap-3 text-xl text-gray-700 dark:text-white">
-            <button className="" onClick={() => console.log("Edit clicked")}>
+            <button
+              className=""
+              onClick={() => navigate(`/edit-bookmark/${bookMark.bookmarkId}`)}
+            >
               <i className="bi bi-pencil-square"></i>
             </button>
             <button onClick={openModal}>

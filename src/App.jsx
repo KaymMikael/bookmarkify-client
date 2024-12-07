@@ -7,6 +7,7 @@ import NewBookmarkPage from "./pages/NewBookmarkPage";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
 import PublicPage from "./pages/PublicPage";
+import EditBookmarkPage from "./pages/EditBookmarkPage";
 
 const App = () => {
   const routes = [
@@ -43,6 +44,14 @@ const App = () => {
       element: (
         <PrivateRoute>
           <NewBookmarkPage />
+        </PrivateRoute>
+      ),
+    },
+    {
+      path: "/edit-bookmark/:bookmarkId",
+      element: (
+        <PrivateRoute>
+          <EditBookmarkPage />
         </PrivateRoute>
       ),
     },
