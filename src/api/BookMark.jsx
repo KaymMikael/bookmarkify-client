@@ -10,11 +10,15 @@ export const fetchBookmarkByBookmarkId = async (bookmarkId) => {
 };
 
 export const addBookmark = async (bookmarkData) => {
-  return axiosHelper.post(`/bookmarks`, bookmarkData);
+  return await axiosHelper.post(`/bookmarks`, bookmarkData);
 };
 
 export const deleteBookmark = async (bookmarkId) => {
-  return axiosHelper.delete(`/bookmarks/${bookmarkId}`);
+  return await axiosHelper.delete(`/bookmarks/${bookmarkId}`);
+};
+
+export const editBookmark = async (data) => {
+  return await axiosHelper.put(`/bookmarks`, data);
 };
 
 export const fetchPublicBookmarks = async (tag = "") => {
