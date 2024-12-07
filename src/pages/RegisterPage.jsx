@@ -13,6 +13,7 @@ const RegisterPage = () => {
               src={BookMarkifyLogo}
               width={150}
               className="mx-auto rounded"
+              loading="lazy"
             />
           </Link>
           <div className="mt-5 space-y-2">

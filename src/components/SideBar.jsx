@@ -48,7 +48,7 @@ const SideBar = () => {
         <div className="text-gray-100 text-xl">
           <div className="p-2.5 mt-1 flex items-center justify-between">
             <div className="flex items-center">
-              <img src={Logo} alt="Bookmarkify Logo" width={48} height={48} />
+              <img src={Logo} alt="Bookmarkify Logo" width={48} height={48} loading="lazy" />
               <h1 className="font-bold text-gray-200 text-[15px] ml-1">
                 BookMarkify
               </h1>

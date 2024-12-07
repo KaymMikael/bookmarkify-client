@@ -21,6 +21,7 @@ const Nav = () => {
             src={BookMarkifyLogo}
             alt="Bookmarkify Logo"
             className="w-10 h-10 rounded"
+            loading="lazy"
           />
           <span className="text-xl dark:text-white">BookMarkify</span>
         </a>
