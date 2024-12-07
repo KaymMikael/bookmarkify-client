@@ -7,7 +7,7 @@ const DashboardBody = () => {
   const { user } = useAuth();
   const {
     data: userBookmarks,
-    isLoading,
+    isFetching,
     isError,
   } = useQuery({
     queryKey: ["userBookmarks", user.user_id],
@@ -22,7 +22,7 @@ const DashboardBody = () => {
   }
 
   return (
-    <BookmarkList bookmarks={userBookmarks} loading={isLoading} user={user} />
+    <BookmarkList bookmarks={userBookmarks} loading={isFetching} user={user} />
   );
 };
 
