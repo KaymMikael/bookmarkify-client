@@ -1,4 +1,5 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import SideBar from "../components/SideBar";
 import { useAuth } from "../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
@@ -7,15 +8,20 @@ import BookmarkList from "../components/BookmarkList";
 
 const PublicPage = () => {
   const { user } = useAuth();
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const tag = queryParams.get("tag") || "";
+
   const {
     data: publicBookmarks,
     isLoading,
     isError,
   } = useQuery({
-    queryKey: ["publicBookmarks"],
-    queryFn: fetchPublicBookmarks,
+    queryKey: ["publicBookmarks", tag],
+    queryFn: () => fetchPublicBookmarks(tag),
     staleTime: Infinity,
   });
+
   return (
     <section>
       <SideBar />

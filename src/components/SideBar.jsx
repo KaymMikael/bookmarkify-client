@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import Logo from "../assets/img/BookMarkifyLogoTransparent.png";
 import { Link } from "react-router-dom";
-import { useAuth } from "../hooks/useAuth";
 import Logout from "./Logout";
+import SearchForm from "./SearchForm";
 
 const SideBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -58,14 +58,7 @@ const SideBar = () => {
           </div>
           <div className="my-2 bg-gray-600 h-[1px]"></div>
         </div>
-        <form className="p-2.5 flex items-center rounded-md px-4 duration-300 cursor-pointer bg-gray-700 text-white">
-          <i className="bi bi-search text-sm"></i>
-          <input
-            type="text"
-            placeholder="Search public bookmark by tag"
-            className="text-[15px] ml-4 w-full bg-transparent focus:outline-none"
-          />
-        </form>
+        <SearchForm />
         <Link
           className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white  hover:scale-90"
           to={"/dashboard"}

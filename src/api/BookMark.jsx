@@ -13,6 +13,7 @@ export const deleteBookmark = async (bookmarkId) => {
   return axiosHelper.delete(`/bookmarks/${bookmarkId}`);
 };
 
-export const fetchPublicBookmarks = async () => {
-  return (await axiosHelper.get("/bookmarks")).data;
+export const fetchPublicBookmarks = async (tag = "") => {
+  const url = tag ? `/bookmarks/tag?tag=${tag}` : "/bookmarks";
+  return (await axiosHelper.get(url)).data;
 };
