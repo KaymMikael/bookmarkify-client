@@ -14,12 +14,11 @@ const PublicPage = () => {
 
   const {
     data: publicBookmarks,
-    isLoading,
+    isFetching,
     isError,
   } = useQuery({
     queryKey: ["publicBookmarks", tag],
     queryFn: () => fetchPublicBookmarks(tag),
-    staleTime: Infinity,
   });
 
   return (
@@ -29,7 +28,7 @@ const PublicPage = () => {
         <div className="max-w-4xl mx-auto">
           <BookmarkList
             bookmarks={publicBookmarks}
-            loading={isLoading}
+            loading={isFetching}
             user={user}
           />
         </div>
