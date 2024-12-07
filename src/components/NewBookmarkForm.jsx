@@ -20,6 +20,7 @@ const NewBookmarkForm = () => {
     setEnabled,
     setMessage,
     setHasError,
+    setTags,
     handleDataChange,
     handleAddTag,
     handleRemoveTag,
@@ -39,7 +40,8 @@ const NewBookmarkForm = () => {
       setEnabled(false);
       setMessage("Bookmark Successfully Created");
       setHasError(false);
-      queryClient.invalidateQueries(["userBookmarks", 'publicBookmarks']);
+      setTags([]);
+      queryClient.invalidateQueries(["userBookmarks", "publicBookmarks"]);
     },
     onError: (error) => {
       console.error(`Error creating bookmark: ${error}`);
