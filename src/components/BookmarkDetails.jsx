@@ -31,6 +31,7 @@ const BookmarkDetails = ({ bookMark, openModal, user_id }) => {
           ""
         )}
       </div>
+      <p className="mt-1 text-gray-400">Created by: {bookMark.author}</p>
       <ul className="flex gap-3 my-2 flex-wrap">
         {bookMark.tags.map((tag) => (
           <li
