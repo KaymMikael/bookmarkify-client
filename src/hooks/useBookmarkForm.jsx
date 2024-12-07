@@ -52,6 +52,7 @@ const useBookmarkForm = (user) => {
     setEnabled,
     setMessage,
     setHasError,
+    setTags,
     handleDataChange,
     handleAddTag,
     handleRemoveTag,
