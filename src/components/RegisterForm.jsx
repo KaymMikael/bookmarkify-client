@@ -1,66 +1,15 @@
-import React, { useState } from "react";
-import debounce from "lodash.debounce";
 import Button from "./Button";
-import axiosHelper from "../axios/axiosHelper";
+import useRegisterForm from "../hooks/useRegisterForm";
 
 const RegisterForm = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
-  const [message, setMessage] = useState("");
-  const [hasError, setHasError] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-
-  const hideMessage = debounce(() => {
-    setMessage("");
-    setHasError(false);
-  }, 2000);//2 seconds
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
-  };
-
-  const handleButtonClick = async () => {
-    const { name, email, password, confirmPassword } = formData;
-
-    if (password !== confirmPassword) {
-      setMessage("Passwords don't match");
-      setHasError(true);
-      hideMessage();
-      return;
-    }
-
-    setIsLoading(true);
-
-    try {
-      const body = { name: name.trim(), email: email.trim(), password };
-      const result = await axiosHelper.post("/auth/register", body);
-      setMessage(result.data.message);
-      console.log(result.data.userId);
-      // Reset inputs
-      setFormData({
-        name: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
-      });
-    } catch (e) {
-      setHasError(true);
-      if (e.response && e.response.data.error) {
-        setMessage(e.response.data.error);
-      } else {
-        setMessage("An error occurred. Please try again.");
-      }
-      console.log(e.message);
-    } finally {
-      setIsLoading(false);
-      hideMessage();
-    }
-  };
+  const {
+    handleChange,
+    formData,
+    message,
+    hasError,
+    isLoading,
+    handleButtonClick,
+  } = useRegisterForm();
 
   return (
     <form onSubmit={(e) => e.preventDefault()} className="space-y-5">
@@ -117,7 +66,11 @@ const RegisterForm = () => {
           {message}
         </p>
       )}
-      <Button text={isLoading ? "Creating..." : "Create account"} onClick={handleButtonClick} disabled={isLoading} />
+      <Button
+        text={isLoading ? "Creating..." : "Create account"}
+        onClick={handleButtonClick}
+        disabled={isLoading}
+      />
     </form>
   );
 };
