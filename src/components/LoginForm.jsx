@@ -1,42 +1,12 @@
-import React, { useState } from "react";
 import Button from "./Button";
-import debounce from "lodash.debounce";
 import { useAuth } from "../hooks/useAuth";
+import useLoginForm from "../hooks/useLoginForm";
 
 const LoginForm = () => {
-  const [formData, setFormData] = useState({ email: "", password: "" });
-  const [message, setMessage] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const { login } = useAuth();
+  const auth = useAuth();
+  const { handleOnChange, formData, message, isLoading, handleLogin } =
+    useLoginForm(auth);
 
-  const handleOnChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
-  };
-
-  const hideMessage = debounce(() => {
-    setMessage("");
-  }, 2000); //2 seconds
-
-  const handleLogin = async () => {
-    const { email, password } = formData;
-
-    if (!email || !password) {
-      return;
-    }
-    setIsLoading(true);
-    try {
-      await login(formData);
-    } catch (e) {
-      if (e.response && e.response.data.error) {
-        setMessage(e.response.data.error);
-      }
-      console.error(e);
-    } finally {
-      setIsLoading(false);
-      hideMessage();
-    }
-  };
   return (
     <form onSubmit={(e) => e.preventDefault()} className="mt-8 space-y-5">
       <div>
