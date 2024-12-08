@@ -1,24 +1,21 @@
 import debounce from "lodash.debounce";
 import { useState } from "react";
+import { handleOnChange, hideMessage } from "../utils/helper";
 
 const useLoginForm = (auth) => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
-  const handleOnChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
-  };
-
-  const hideMessage = debounce(() => {
-    setMessage("");
-  }, 2000); //2 seconds
+  
+  const handleChange = handleOnChange(setFormData);
+  const hideMsg = hideMessage(setMessage);
 
   const handleLogin = async () => {
     const { email, password } = formData;
 
     if (!email || !password) {
+      setMessage("Please provide all fields");
+      hideMsg();
       return;
     }
     setIsLoading(true);
@@ -31,11 +28,11 @@ const useLoginForm = (auth) => {
       console.error(e);
     } finally {
       setIsLoading(false);
-      hideMessage();
+      hideMsg();
     }
   };
 
-  return { formData, message, isLoading, handleOnChange, handleLogin };
+  return { formData, message, isLoading, handleChange, handleLogin };
 };
 
 export default useLoginForm;
