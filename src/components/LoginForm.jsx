@@ -4,7 +4,7 @@ import useLoginForm from "../hooks/useLoginForm";
 
 const LoginForm = () => {
   const auth = useAuth();
-  const { handleOnChange, formData, message, isLoading, handleLogin } =
+  const { handleChange, formData, message, isLoading, handleLogin } =
     useLoginForm(auth);
 
   return (
@@ -16,7 +16,7 @@ const LoginForm = () => {
           required
           name="email"
           value={formData.email}
-          onChange={handleOnChange}
+          onChange={handleChange}
           className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary shadow-sm rounded-lg dark:text-white"
         />
       </div>
@@ -26,7 +26,7 @@ const LoginForm = () => {
           type="password"
           name="password"
           value={formData.password}
-          onChange={handleOnChange}
+          onChange={handleChange}
           required
           className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary shadow-sm rounded-lg dark:text-white"
         />
